@@ -22,10 +22,23 @@ describe('getUsers', () => {
   });
 });
 
+describe('getUsersByCity', () => {
+  it('Should return object array of users within a radius of a location', async () => {
+    // Arrange
+    const data = JSON.parse(fs.readFileSync(`${__dirname}/mock/cityLondon.json`));
+    mock.onGet('https://bpdts-test-app.herokuapp.com/city/London/users').reply(200, data);
+    // Act
+    const response = await users.getUsersByCity('London');
+    // Assert
+    expect(response).to.eql(data);
+    expect(response).to.be.an('array');
+  });
+});
+
 describe('getUsersNearLocation', () => {
   it('Should return object array of users within a radius of a location', async () => {
     // Arrange
-    const expected = JSON.parse(fs.readFileSync(`${__dirname}/mock/inLondon.json`));
+    const expected = JSON.parse(fs.readFileSync(`${__dirname}/mock/coordinatesLondon.json`));
     mock.onGet('https://bpdts-test-app.herokuapp.com/users').reply(200, mockedUsers);
     // Act
     const response = await users.getUsersNearLocation(config.london, 50);

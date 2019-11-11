@@ -11,6 +11,15 @@ module.exports.getUsers = async () => new Promise((resolve, reject) => {
     });
 });
 
+module.exports.getUsersByCity = async (city) => new Promise((resolve, reject) => {
+  axios.get(`${config.base}/city/${city}/users`).then((response) => {
+    resolve(response.data);
+  })
+    .catch((error) => {
+      reject(error);
+    });
+});
+
 module.exports.getUsersNearLocation = async (location, radius) => {
   const users = await this.getUsers();
 
