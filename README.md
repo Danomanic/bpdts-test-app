@@ -13,17 +13,18 @@ Using the language of your choice please build your own API which calls the API 
 - Lodash
 - Geopoint
 
-### Run App
+## Run App
 ```js
-node src/index.js
+$ npm install
+$ node src/index.js
 ```
 
 ### Query API
 ```bash
-curl -X GET "http://localhost:3000/v1/users/london" -H "accept: application/json"
+$ curl -X GET "http://localhost:3000/v1/users/london" -H "accept: application/json"
 ```
 
-### Run Tests
+## Run Tests
 ```js
-npm test
+$ npm test
 ```
